@@ -18,9 +18,12 @@ RUN apk add --no-cache \
        | cut -d ":" -f 2,3 \
        | tr -d \" \
        | wget -qi - \
+       
+   && mkdir -p /download
+   && cd /download
    && tarball="$(find . -name "*linux-amd64.tar.gz")" \
    && tar -xzf $tarball \
-   && mv portainer/portainer / \
+   && mv /download/portainer/portainer / \
    && chmod +x /portainer \
    && rm $tarball
 
