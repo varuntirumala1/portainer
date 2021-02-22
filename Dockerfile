@@ -32,6 +32,10 @@ RUN chmod +x /healthcheck.sh
 HEALTHCHECK --interval=1m CMD /healthcheck.sh
 
 COPY Argo ./argo/
-EXPOSE 9000
 VOLUME /data
+WORKDIR /
+
+EXPOSE 9000
+EXPOSE 8000
+
 ENTRYPOINT ["/portainer"]
