@@ -20,10 +20,9 @@ RUN apk add --no-cache \
        | wget -qi - \
    && tarball="$(find . -name "*linux-amd64.tar.gz")" \
    && tar -xzf $tarball \
-   && cd portainer/ \
-   && mv portainer / \
+   && mv portainer/portainer / \
    && chmod +x /portainer \
-   && rm ./$tarball
+   && rm $tarball
 
 RUN chmod +x /etc/init.d/cloudflared \
    && rc-update add cloudflared
