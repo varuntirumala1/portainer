@@ -10,7 +10,7 @@ RUN apk add --no-cache \
         wget \
         openrc \
     && curl -s -O https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.tgz \
-    && tar zxf cloudflared-stable-linux-amd64.tgz \
+    && tar -xzf cloudflared-stable-linux-amd64.tgz \
     && mv cloudflared /bin \
     && rm cloudflared-stable-linux-amd64.tgz \
     && curl -s https://api.github.com/repos/portainer/portaine/releases/latest \
