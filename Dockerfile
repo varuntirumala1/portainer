@@ -10,10 +10,10 @@ RUN apk add --no-cache \
         wget \
         openrc \
     && curl -s -O https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.tgz \
-    && tar -xzf cloudflared-stable-linux-amd64.tgz \
+    && tar zxf cloudflared-stable-linux-amd64.tgz \
     && mv cloudflared /bin \
     && rm cloudflared-stable-linux-amd64.tgz \
-    && curl -s https://api.github.com/repos/portainer/portaine/releases/latest \
+    && curl -s https://api.github.com/repos/portainer/portainer/releases/latest \
        | grep "browser_download_url.*portainer-[^extended].*-linux-amd64\.tar\.gz" \
        | cut -d ":" -f 2,3 \
        | tr -d \" \
