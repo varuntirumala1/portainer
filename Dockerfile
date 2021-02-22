@@ -18,13 +18,10 @@ RUN apk add --no-cache \
        | cut -d ":" -f 2,3 \
        | tr -d \" \
        | wget -qi - \
-       
-   && mkdir -p /download
-   && cd /download
    && tarball="$(find . -name "*linux-amd64.tar.gz")" \
    && tar -xzf $tarball \
-   && mv /download/portainer/portainer / \
-   && chmod +x /portainer \
+   && mv portainer/portainer /root/ \
+   && chmod +x /root/portainer \
    && rm $tarball
 
 RUN chmod +x /etc/init.d/cloudflared \
