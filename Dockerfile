@@ -13,6 +13,7 @@ RUN apk add --no-cache \
     && tar zxf cloudflared-stable-linux-amd64.tgz \
     && mv cloudflared /bin \
     && rm cloudflared-stable-linux-amd64.tgz \
+    && cd /tmp \
     && curl -s https://api.github.com/repos/portainer/portainer/releases/latest \
        | grep "browser_download_url.*portainer-[^extended].*-linux-amd64\.tar\.gz" \
        | cut -d ":" -f 2,3 \
@@ -20,9 +21,10 @@ RUN apk add --no-cache \
        | wget -qi - \
    && tarball="$(find . -name "*linux-amd64.tar.gz")" \
    && tar -xzf $tarball \
-   && cp portainer/portainer / \
+   && cp /tmp/portainer/portainer / \
    && chmod +x /portainer \
-   && rm $tarball
+   && rm $tarball \
+   && rm -rf /tmp/*
 
 RUN chmod +x /etc/init.d/cloudflared \
    && rc-update add cloudflared
