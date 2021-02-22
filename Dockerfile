@@ -1,4 +1,4 @@
-FROM alpine:3.13
+FROM alpine:3.12
 ADD cloudflared /etc/init.d/
 RUN apk add --no-cache \
         openssl \
@@ -20,8 +20,8 @@ RUN apk add --no-cache \
        | wget -qi - \
    && tarball="$(find . -name "*linux-amd64.tar.gz")" \
    && tar -xzf $tarball \
-   && mv portainer/portainer /root/ \
-   && chmod +x /root/portainer \
+   && mv portainer/portainer / \
+   && chmod +x /portainer \
    && rm $tarball
 
 RUN chmod +x /etc/init.d/cloudflared \
