@@ -34,7 +34,6 @@ HEALTHCHECK --interval=1m CMD /healthcheck.sh
 
 COPY Argo ./argo/
 VOLUME /data
-WORKDIR /
 
 EXPOSE 9000
 EXPOSE 8000
