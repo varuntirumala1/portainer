@@ -1,4 +1,5 @@
 FROM alpine:3.12
+FROM portainer/base
 ADD cloudflared /etc/init.d/
 RUN apk add --no-cache \
         openssl \
