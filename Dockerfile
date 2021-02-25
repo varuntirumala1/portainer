@@ -20,4 +20,4 @@ VOLUME /data
 EXPOSE 9000
 EXPOSE 8000
 
-ENTRYPOINT ["/init"]
+ENTRYPOINT ["/portainer"]
