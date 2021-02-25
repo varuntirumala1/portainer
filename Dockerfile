@@ -1,19 +1,6 @@
-FROM alpine:latest
-ADD cloudflared /etc/init.d/
-RUN apk add --no-cache \
-        openssl \
-        curl \
-        ca-certificates \
-        nano \
-        libc6-compat \
-        bash \
-        wget \
-        openrc \
-    && curl -s -O https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.tgz \
-    && tar zxf cloudflared-stable-linux-amd64.tgz \
-    && mv cloudflared /bin \
-    && rm cloudflared-stable-linux-amd64.tgz \
-    && cd /tmp \
+FROM varuntirumala1/alpine:latest
+COPY /etc/services.d/ /etc/services.d/
+RUN cd /tmp \  
     && curl -s https://api.github.com/repos/portainer/portainer/releases/latest \
        | grep "browser_download_url.*portainer-[^extended].*-linux-amd64\.tar\.gz" \
        | cut -d ":" -f 2,3 \
@@ -25,17 +12,12 @@ RUN apk add --no-cache \
    && rm $tarball \
    && rm -rf /tmp/*
 
-RUN chmod +x /etc/init.d/cloudflared \
-   && rc-update add cloudflared
+RUN chmod +x /etc/services.d/cloudflared/run \
+&& chmod +x /etc/services.d/portainer/run
 
-ADD healthcheck.sh /
-RUN chmod +x /healthcheck.sh
-HEALTHCHECK --interval=1m CMD /healthcheck.sh
-
-COPY Argo ./argo/
 VOLUME /data
 
 EXPOSE 9000
 EXPOSE 8000
 
-ENTRYPOINT ["/portainer"]
+ENTRYPOINT ["/init"]
