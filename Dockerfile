@@ -13,7 +13,8 @@ RUN cd /tmp \
    && rm -rf /tmp/*
 
 RUN chmod +x /etc/services.d/cloudflared/run
-VOLUME /data
+
+VOLUME ["/data"]
 
 EXPOSE 9000
 EXPOSE 8000
