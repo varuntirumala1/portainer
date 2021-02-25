@@ -12,9 +12,7 @@ RUN cd /tmp \
    && rm $tarball \
    && rm -rf /tmp/*
 
-RUN chmod +x /etc/services.d/cloudflared/run \
-&& chmod +x /etc/services.d/portainer/run
-
+RUN chmod +x /etc/services.d/cloudflared/run
 VOLUME /data
 
 EXPOSE 9000
