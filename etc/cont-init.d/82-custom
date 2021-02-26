@@ -1,0 +1,5 @@
+#!/usr/bin/execlineb -P
+background
+{
+  /usr/sbin/nginx -c /etc/nginx/nginx.conf
+}
