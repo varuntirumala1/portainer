@@ -15,10 +15,10 @@ RUN cd /tmp \
    && rm $tarball \
    && rm -rf /tmp/*
 
-COPY /portainer-proxy.conf /config/nginx/site-confs/default
+COPY /portainer.conf /etc/nginx/http.d/portainer.conf
 
 VOLUME ["/data"]
 
-EXPOSE 80
+EXPOSE 443
 
 ENTRYPOINT ["/init","/portainer"]
