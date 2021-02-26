@@ -14,7 +14,7 @@ RUN cd /tmp \
    && rm $tarball \
    && rm -rf /tmp/*
 
-RUN mkdir -P /run/nginx \
+RUN mkdir -p /run/nginx \
 && rm /usr/share/nginx/http-default_server.conf \
 && rm /etc/nginx/conf.d/default.conf
 COPY /portainer.conf /etc/nginx/http.d/portainer.conf
