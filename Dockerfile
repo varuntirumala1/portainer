@@ -15,7 +15,7 @@ RUN cd /tmp \
    && rm $tarball \
    && rm -rf /tmp/*
 
-#RUN rm /etc/nginx/sites-enabled/default
+RUN rm /usr/share/nginx/http-default_server.conf
 COPY /portainer.conf /etc/nginx/http.d/portainer.conf
 
 VOLUME ["/data"]
