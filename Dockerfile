@@ -1,6 +1,5 @@
 FROM varuntirumala1/alpine:latest
-COPY /etc/services.d/ /etc/services.d/
-RUN chmod +x /etc/services.d/cloudflared/run
+COPY /etc/ /etc/
 
 RUN apk add --no-cache nginx
 RUN cd /tmp \  
