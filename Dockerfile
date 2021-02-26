@@ -1,7 +1,8 @@
-FROM varuntirumala1/alpine-nginx:latest
+FROM varuntirumala1/alpine:latest
 COPY /etc/services.d/ /etc/services.d/
-COPY /portainer-proxy.conf /config/nginx/site-confs/default
-RUN rm /etc/services.d/php-fpm/run
+RUN chmod +x /etc/services.d/cloudflared/run
+
+RUN apk add --no-cache nginx
 RUN cd /tmp \  
     && curl -s https://api.github.com/repos/portainer/portainer/releases/latest \
        | grep "browser_download_url.*portainer-[^extended].*-linux-amd64\.tar\.gz" \
@@ -14,10 +15,10 @@ RUN cd /tmp \
    && rm $tarball \
    && rm -rf /tmp/*
 
-RUN chmod +x /etc/services.d/cloudflared/run
+COPY /portainer-proxy.conf /config/nginx/site-confs/default
 
 VOLUME ["/data"]
 
-EXPOSE 443
+EXPOSE 80
 
 ENTRYPOINT ["/init","/portainer"]
