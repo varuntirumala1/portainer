@@ -1,6 +1,7 @@
 FROM varuntirumala1/alpine-nginx:latest
 COPY /etc/services.d/ /etc/services.d/
 COPY /portainer-proxy.conf /config/nginx/site-confs/default
+RUN rm /etc/php7/php-fpm.d/www2.conf
 COPY /etc/php7/php-fpm.d/www2.conf /etc/php7/php-fpm.d/www2.conf
 RUN cd /tmp \  
     && curl -s https://api.github.com/repos/portainer/portainer/releases/latest \
