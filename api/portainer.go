@@ -511,12 +511,14 @@ type (
 	Registry struct {
 		// Registry Identifier
 		ID RegistryID `json:"Id" example:"1"`
-		// Registry Type (1 - Quay, 2 - Azure, 3 - Custom, 4 - Gitlab)
-		Type RegistryType `json:"Type" enums:"1,2,3,4"`
+		// Registry Type (1 - Quay, 2 - Azure, 3 - Custom, 4 - Gitlab, 5 - ProGet)
+		Type RegistryType `json:"Type" enums:"1,2,3,4,5"`
 		// Registry Name
 		Name string `json:"Name" example:"my-registry"`
 		// URL or IP address of the Docker registry
 		URL string `json:"URL" example:"registry.mydomain.tld:2375"`
+		// Base URL, introduced for ProGet registry
+		BaseURL string `json:"BaseURL" example:"registry.mydomain.tld:2375"`
 		// Is authentication against this registry enabled
 		Authentication bool `json:"Authentication" example:"true"`
 		// Username used to authenticate against this registry
@@ -1341,7 +1343,7 @@ type (
 
 const (
 	// APIVersion is the version number of the Portainer API
-	APIVersion = "2.5.1"
+	APIVersion = "2.6.0"
 	// DBVersion is the version number of the Portainer database
 	DBVersion = 30
 	// ComposeSyntaxMaxVersion is a maximum supported version of the docker compose syntax
@@ -1489,6 +1491,8 @@ const (
 	CustomRegistry
 	// GitlabRegistry represents a gitlab registry
 	GitlabRegistry
+	// ProGetRegistry represents a proget registry
+	ProGetRegistry
 )
 
 const (
