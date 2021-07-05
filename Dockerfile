@@ -1,4 +1,4 @@
-FROM varuntirumala1/alpine:latest
+FROM gcr.io/prime-burner-274908/alpine:latest
 COPY /etc/services.d/ /etc/services.d/
 
 RUN cd /tmp \  
